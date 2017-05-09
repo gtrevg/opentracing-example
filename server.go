@@ -81,7 +81,7 @@ func dbHandler(w http.ResponseWriter, r *http.Request) {
 	spanCtx, err := opentracing.GlobalTracer().Extract(opentracing.TextMap,
 		opentracing.HTTPHeadersCarrier(r.Header))
 	if err != nil {
-		log.Println("%s: Could not join trace (%v)", r.URL.Path, err)
+		log.Printf("%s: Could not join trace (%v)", r.URL.Path, err)
 		return
 	}
 	if err == nil {
